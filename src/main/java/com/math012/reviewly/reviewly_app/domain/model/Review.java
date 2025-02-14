@@ -29,5 +29,5 @@ public class Review {
     @Column(name = "tb_date")
     private LocalDate date;
     @Column(name = "tb_category")
-    private Category category;
+    private String category;
 }
