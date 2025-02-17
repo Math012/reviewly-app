@@ -13,8 +13,6 @@ import java.util.List;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "tb_user")
 public class User implements UserDetails {
@@ -38,10 +36,20 @@ public class User implements UserDetails {
     @Column(nullable = false)
     private String password;
 
-    // TODO Create the review class
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
+
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
     private List<Review> reviews;
+
+    public User() {
+    }
+
+    public User(String name, String lastname, Integer age, String username, String password) {
+        this.name = name;
+        this.lastname = lastname;
+        this.age = age;
+        this.username = username;
+        this.password = password;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
