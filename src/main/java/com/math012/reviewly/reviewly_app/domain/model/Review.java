@@ -1,5 +1,6 @@
 package com.math012.reviewly.reviewly_app.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.math012.reviewly.reviewly_app.enums.Category;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -11,8 +12,6 @@ import java.time.LocalDate;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "tb_review")
 public class Review {
@@ -30,4 +29,18 @@ public class Review {
     private LocalDate date;
     @Column(name = "tb_category")
     private String category;
+
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    public Review() {
+    }
+
+    public Review(String titleOfTheWork, Integer rating, String review) {
+        this.titleOfTheWork = titleOfTheWork;
+        this.rating = rating;
+        this.review = review;
+    }
 }
