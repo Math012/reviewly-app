@@ -95,7 +95,7 @@ response:
 ```
 
 response: "Alteração feita com sucesso!"
-### Endpoint para escluir uma resenha com base em seu id - /reviews/delete/reviews/by/{id}
+### Endpoint para excluir uma resenha com base em seu id - /reviews/delete/reviews/by/{id}
   - É necessário informar o id da categoria.
   - Endpoint privado.
     
